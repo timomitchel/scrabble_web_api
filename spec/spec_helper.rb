@@ -28,7 +28,16 @@ RSpec.configure do |config|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
   end
   config.before(:each) do
-        
+    stub_request(:get, "https://od-api.oxforddictionaries.com/api/v1/inflections/en/happy").
+         with(  headers: {
+       	  'Accept'=>'*/*',
+       	  'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+       	  'App-Id'=>'b3eaa14e',
+       	  'App-Key'=>'145d2c80ef1ee1180e86283560fa4e03',
+       	  'User-Agent'=>'Faraday v0.14.0'
+           }).
+         to_return(status: 200, body: "Good", headers: {})
+
     stub_request(:get, "https://od-api.oxforddictionaries.com/api/v1/inflections/en/foxez").
         with(  headers: {
         'Accept'=>'*/*',
