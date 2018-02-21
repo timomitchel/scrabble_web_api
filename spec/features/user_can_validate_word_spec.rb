@@ -13,7 +13,7 @@ require 'rails_helper'
         
         visit root_path
 
-        fill_in 'word', with: 'foxes'
+        fill_in 'q', with: 'foxes'
         click_on "Validate Word"
 
         expect(current_path).to eq root_path
