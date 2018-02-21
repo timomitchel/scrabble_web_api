@@ -17,8 +17,7 @@ require 'rails_helper'
         click_on "Validate Word"
 
         expect(current_path).to eq root_path
-        expect(page).to have_content "'foxes' is a valid word and its root form is 'fox'."
-          
+        expect(page).to have_content "'foxes' is a valid word and its root form is 'fox'." 
       end
     end
   end
