@@ -17,4 +17,12 @@ describe 'calid game response with game id and user scores'do
       expect(game_response['player_1'].class).to eq Hash
       expect(game_response['player_2'].class).to eq Hash
   end
+
+  it 'posts a play to the game' do
+    post "/api/v1/games/#{game.id}/plays"
+
+    # game_response = JSON.parse(response.body)
+
+    expect(response).to be_successful
+  end
 end
