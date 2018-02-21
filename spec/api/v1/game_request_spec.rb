@@ -12,5 +12,9 @@ describe 'calid game response with game id and user scores'do
 
       game_response = JSON.parse(response.body)
       expect(response).to be_successful
+      expect(game_response['plays'].class).to eq Array
+      expect(game_response['id']).to eq game.id
+      expect(game_response['player_1'].class).to eq Hash
+      expect(game_response['player_2'].class).to eq Hash
   end
 end
