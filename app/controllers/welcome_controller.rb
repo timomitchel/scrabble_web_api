@@ -8,11 +8,17 @@ class WelcomeController < ApplicationController
       end
       word = params["q"]
       response = x.get do |req|
-        req.url "entries/en/#{word}/synonyms"
+        req.url "inflections/en/#{word}"
         req.headers["app_id"] = ENV['app_id']
         req.headers["app_key"] = ENV['app_key']
       end
-      result = JSON.parse(response.body, symbolize_names: true)
+      if JSON.parse(response.body).class == Hash
+        result = JSON.parse(response.body, symbolize_names: true)[:results]
+        root_word = result.first[:lexicalEntries].first[:inflectionOf].first[:id]
+        flash[:success] = "#{word} is a valid word and its root form is '#{root_word}''"
+      else
+        flash[:error] = "#{word} is not a valid word"
+      end
     end
   end
 end
