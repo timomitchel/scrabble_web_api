@@ -18,4 +18,10 @@ require 'rails_helper'
         expect(validate_fail).to eq false
         expect(validate_success).to eq true
       end
+
+      it 'should either return the word root or false' do
+        bad_response = oxford_service.check_response
+
+        expect(bad_response).to eq false
+      end
   end
