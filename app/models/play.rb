@@ -12,8 +12,9 @@ class Play < ApplicationRecord
     }
   end
 
-  private
-
     def score_word
+      word.chars.map do |letter|
+        letter_scores[letter.upcase]
+      end.sum
     end
 end
