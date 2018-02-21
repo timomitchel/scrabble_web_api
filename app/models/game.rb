@@ -6,11 +6,9 @@ class Game < ApplicationRecord
 
 def as_json(options={})
   if options.key?(:only) or options.key?(:methods) or options.key?(:include) or options.key?(:except)
-    h = super(options)
+   super(options)
   else
-    h = super(only: :id, 
-              include: {:player_1 => {:only => [:id, :score]}, :player_2 => [:id, :score]}
-              )
+   super(only: :id,)
   end  
 end
 
