@@ -12,7 +12,6 @@ class WelcomeController < ApplicationController
         req.headers["app_id"] = ENV['app_id']
         req.headers["app_key"] = ENV['app_key']
       end
-
       if valid_json?(response.body)
         result = JSON.parse(response.body, symbolize_names: true)[:results]
         root_word = result.first[:lexicalEntries].first[:inflectionOf].first[:id]
