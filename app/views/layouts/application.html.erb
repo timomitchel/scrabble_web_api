@@ -14,10 +14,12 @@
       <div class="logo sm-col-left">
         <%= link_to "ScrabbleWeb", root_url %>
       </div>
+    </nav>
+    <div class= "flash">
       <% flash.each do |key, value| %>
         <div class="alert alert-<%= key %>"><%= value %></div>
       <% end %>
-    </nav>
+      </div>
 
     <%= yield %>
   </body>
