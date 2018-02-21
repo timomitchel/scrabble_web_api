@@ -12,6 +12,11 @@ class Play < ApplicationRecord
     }
   end
 
+  def define
+    score_word
+  end
+
+  private
     def score_word
       word.chars.map do |letter|
         letter_scores[letter.upcase]
