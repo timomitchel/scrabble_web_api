@@ -30,7 +30,7 @@ class OxfordService
   end
 
   def check_response
-   if valid_json?(response_inflections.body)
+    if valid_json?(response_inflections.body)
         result = JSON.parse(response_inflections.body, symbolize_names: true)[:results]
         result.first[:lexicalEntries].first[:inflectionOf].first[:id]
     else
