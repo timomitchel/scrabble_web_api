@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'calid game response with game id and user scores'do 
+describe 'valid game response with game id and user scores'do 
     let!(:game) {create(:game)}
     let!(:user) {create(:user)}
     let!(:user_2) {create(:user)}
@@ -12,17 +12,17 @@ describe 'calid game response with game id and user scores'do
 
       game_response = JSON.parse(response.body)
       expect(response).to be_successful
-      expect(game_response['plays'].class).to eq Array
-      expect(game_response['id']).to eq game.id
-      expect(game_response['player_1'].class).to eq Hash
-      expect(game_response['player_2'].class).to eq Hash
+      expect(game_response['game_id']).to eq game.id
+      expect(game_response['scores'].class).to eq Array
   end
 
   it 'posts a play to the game' do
     post "/api/v1/games/#{game.id}/plays?user_id=#{user.id}&word=at"
 
-    # game_response = JSON.parse(response.body)
-
+    game_response = JSON.parse(response.body)
     expect(response).to be_successful
+    expect(response).to have_http_status(201)
+    expect(game_response['game_id']).to eq game.id
+    expect(game_response['scores'].class).to eq Array
   end
 end

@@ -12,7 +12,7 @@ class Play < ApplicationRecord
     }
   end
 
-  def define
+  def score
     score_word
   end
 
