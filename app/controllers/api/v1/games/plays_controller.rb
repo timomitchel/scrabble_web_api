@@ -1,5 +1,5 @@
 class Api::V1::Games::PlaysController < ApplicationController
-skip_before_action :verify_authenticity_token, :only => [:create]
+  skip_before_action :verify_authenticity_token, :only => [:create]
 
   def create
     if OxfordService.new(params[:word]).check_response == false

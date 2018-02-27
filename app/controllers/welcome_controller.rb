@@ -6,7 +6,7 @@ class WelcomeController < ApplicationController
       if response == false
         flash[:error] = "#{word} is not a valid word"
       else
-        flash[:success] = "#{word} is a valid word and its root form is '#{response}''"
+        flash[:success] = "#{word} is a valid word and its root form is '#{response.id}'"
         redirect_to root_path
       end
     end
