@@ -7,11 +7,19 @@ class Game < ApplicationRecord
   def scores
       [{
         user_id: player_1.id,
-        score: player_1.score
+        score: player_1_score
       }, {
         user_id: player_2.id,
-        score: player_2.score
+        score: player_2_score
       }]
+  end
+
+  def player_1_score
+    player_1.plays.where(game_id: self.id).sum(:score)
+  end
+
+  def player_2_score
+    player_2.plays.where(game_id: self.id).sum(:score)  
   end
 
   
