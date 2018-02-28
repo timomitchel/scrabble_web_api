@@ -32,7 +32,7 @@ class OxfordService
   def check_response
     if valid_json?(response_inflections.body)
         result = JSON.parse(response_inflections.body, symbolize_names: true)[:results]
-        WordFeatures.new(result.first[:lexicalEntries].first[:inflectionOf].first)
+        WordFeatures.new(result.first[:lexicalEntries].first)
     else
       false
     end
