@@ -4,13 +4,15 @@ class Game < ApplicationRecord
 
   has_many :plays
 
-def as_json(options={})
-  if options.key?(:only) or options.key?(:methods) or options.key?(:include) or options.key?(:except)
-   super(options)
-  else
-   super(only: :id,)
-  end  
-end
+  def scores
+      [{
+        user_id: player_1.id,
+        score: player_1.score
+      }, {
+        user_id: player_2.id,
+        score: player_2.score
+      }]
+  end
 
   
 end

@@ -5,7 +5,6 @@ describe 'Play' do
     context "#score_word" do
       it "scores the word" do
         play = create(:play, word: "assess")
-        play.update(score: play.define)
         expect(play.score).to eq(6)
       end
     end
